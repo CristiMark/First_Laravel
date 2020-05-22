@@ -22,4 +22,3 @@ Route::get('/pizza','PizzaController@index');
 Route::get('/pizza/create','PizzaController@create' );
 Route::post('/pizza','PizzaController@store' );
 Route::get('/pizza/{id}','PizzaController@show' );
-
