@@ -7,6 +7,10 @@ use App\Pizza;
 
 class PizzaController extends Controller
 {
+    // public function __construct(){
+    //     $this-> middleware('auth');
+    // }
+
     //
     public function index(){
 
@@ -33,9 +37,17 @@ class PizzaController extends Controller
         $pizza->name = request('name');
         $pizza->type = request('type');
         $pizza->base = request('base');
+        $pizza->toppings = request('topping');
 
         $pizza->save();
 
-       return redirect('/')->with('msg', 'Thanks for order'); 
+       return redirect('/')->with('msg', 'Thanks for order');
+    }
+    public function destroy($id){
+
+        $pizza = Pizza::findOrFail($id);
+        $pizza->delete();
+
+        return redirect('/pizza');
     }
 }

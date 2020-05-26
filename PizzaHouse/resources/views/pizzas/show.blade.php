@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.app')
 @section('content')
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
@@ -19,7 +19,11 @@
                 <div class="title m-b-md">
                     Pizza Details - {{$pizza->name}}
                 </div>
-             
+            <form action="{{route('pizza.destroy', $pizza->id)}}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button>Delete Order</button>
+            </form>
             </div>
         </div>
 

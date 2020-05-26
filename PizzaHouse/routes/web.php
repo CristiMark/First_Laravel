@@ -18,7 +18,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/pizza','PizzaController@index');
-Route::get('/pizza/create','PizzaController@create' );
-Route::post('/pizza','PizzaController@store' );
-Route::get('/pizza/{id}','PizzaController@show' );
+Route::get('/pizza','PizzaController@index')->name('pizza.index')->middleware('auth');
+Route::get('/pizza/create','PizzaController@create')->name('pizza.create');
+Route::post('/pizza','PizzaController@store' )->name('pizza.store');
+Route::get('/pizza/{id}','PizzaController@show' )->name('pizza.show')->middleware('auth');
+Route::delete('/pizza/{id}','PizzaController@destroy' )->name('pizza.destroy')->middleware('auth');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
