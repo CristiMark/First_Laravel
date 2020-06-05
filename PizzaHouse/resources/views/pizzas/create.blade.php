@@ -6,6 +6,7 @@
        @csrf
        <label for="name">Your Name:</label>
        <input type="text" id ="name" name="name">
+       <div>{{$errors->first('name')}}</div>
        <label for="type"> Chose pizza type:</label>
        <select name="type" id="type">
        <option value="margarita">Margarita</option>

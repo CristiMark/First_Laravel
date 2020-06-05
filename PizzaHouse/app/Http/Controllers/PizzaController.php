@@ -32,12 +32,16 @@ class PizzaController extends Controller
 
     public function store(){
 
+        $data = request()->validate([
+            'name'=>'required'
+        ]);
+
         $pizza = new Pizza();
 
         $pizza->name = request('name');
         $pizza->type = request('type');
         $pizza->base = request('base');
-        $pizza->toppings = request('topping');
+       // $pizza->toppings = request('topping');
 
         $pizza->save();
 
