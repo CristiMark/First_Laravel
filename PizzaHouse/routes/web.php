@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/pizza','PizzaController@index')->name('pizza.index')->middleware('auth');
+Route::get('/pizza','PizzaController@index')->name('pizza.index');
 Route::get('/pizza/create','PizzaController@create')->name('pizza.create');
 Route::post('/pizza','PizzaController@store' )->name('pizza.store');
 Route::get('/pizza/{id}','PizzaController@show' )->name('pizza.show')->middleware('auth');
