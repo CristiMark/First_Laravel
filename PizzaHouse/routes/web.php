@@ -27,3 +27,7 @@ Route::delete('/pizza/{id}','PizzaController@destroy' )->name('pizza.destroy')->
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//OAuth
+Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('login/{provider}/callback','Auth\LoginController@handleProviderCallback');

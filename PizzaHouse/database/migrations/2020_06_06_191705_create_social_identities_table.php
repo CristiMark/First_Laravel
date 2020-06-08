@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePizzaTable extends Migration
+class CreateSocialIdentitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreatePizzaTable extends Migration
      */
     public function up()
     {
-        Schema::create('pizzas', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('social_identities', function (Blueprint $table) {
+            $table->increments('id');
+            $table->bigInteger('user_id');
+            $table->string('provider_name')->nullable();
+            $table->string('provider_id')->unique()->nullable();
             $table->timestamps();
-            $table->string('type');
-            $table->string('base');
-            $table->string('name');
-         //   $table->json('toppings');
         });
     }
 
@@ -30,6 +29,6 @@ class CreatePizzaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pizza');
+        Schema::dropIfExists('social_identities');
     }
 }
